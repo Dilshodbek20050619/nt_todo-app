@@ -1,3 +1,4 @@
+
 <?php
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -11,7 +12,7 @@ $todo = new Todo();
 $router = new Router();
 
 $router->get('/', function () {
-    echo '<a href="/todos">Todos</a>';
+    view('router');
 });
 
 $router->get('/todos', function () use ($todo) {
@@ -23,31 +24,29 @@ $router->get('/todos', function () use ($todo) {
 $router->post('/todos', function () use ($todo) {
     if (!empty($_POST['title']) && !empty($_POST['due_date'])) {
         $todo->store($_POST['title'], $_POST['due_date']);
+        header('Location: /todos');
     }
 });
-$router->get('/complete', function () use ($todo) {
-    if (!empty($_GET['id'])) {
-        $todo->complete($_GET['id']);
+
+$router->get('/complete/{id}', function ($todoId) use ($todo) {
+
+        $todo->complete($todoId);
         header('Location: /todos');
         exit();
-    }
 });
 
-$router->get('/pending', function () use ($todo) {
-    if (!empty($_GET['id'])) {
-        $todo->pending($_GET['id']);
+
+$router->get('/pending/{id}', function ($todoId) use ($todo) {
+
+        $todo->pending($todoId);
         header('Location: /todos');
         exit();
-    }
 });
 
-$router->get('/in_progress', function () use ($todo) {
-    if (!empty($_GET['id'])) {
-        $todo->inProgress($_GET['id']);
+
+$router->get('/in_progress/{id}', function ($todoId) use ($todo) {
+        $todo->inProgress($todoId);
         header('Location: /todos');
         exit();
-    }
 });
-
-
 

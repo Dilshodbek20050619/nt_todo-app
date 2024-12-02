@@ -49,7 +49,7 @@
                 elit. Doloribus ea quas quis sit voluptas! Aperiam
                 distinctio ducimus eaque error, et, expedita harum laboriosam molestias
                 mollitia nisi officia quidem repellat, repellendus?</p>
-            <form action="/store" method="POST">
+            <form action="/todos" method="POST">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Recipient's username"
                            aria-label="Recipient's username"
@@ -69,9 +69,9 @@
                         <li class="' . $todo['status'] . ' list-group-item d-flex justify-content-between align-items-center">
                     ' . $todo["title"] . '
                     <div>
-                        <a href="/in_progress?id=' . $todo["id"] . '" class="btn btn-outline-warning">In progress</a>
+                        <a href="/in_progress/' . $todo["id"] . '" class="btn btn-outline-warning">In progress</a>
                          
-                        <a href="/pending?id=' . $todo["id"] . '" class="btn btn-outline-primary">Pending</a> 
+                        <a href="/pending/' . $todo["id"] . '" class="btn btn-outline-primary">Pending</a> 
                     </div>
                 </li>
                     ';
@@ -80,9 +80,9 @@
                         <li class="' . $todo['status'] . ' list-group-item d-flex justify-content-between align-items-center">
                     ' . $todo["title"] . '
                     <div>
-                        <a href="/in_progress?id=' . $todo["id"] . '" class="btn btn-outline-warning">In progress</a>
+                        <a href="/in_progress/' . $todo["id"] . '" class="btn btn-outline-warning">In progress</a>
                          
-                        <a href="/complete?id=' . $todo["id"] . '" class="btn btn-outline-success">Complete</a> 
+                        <a href="/complete/' . $todo["id"] . '" class="btn btn-outline-success">Complete</a> 
                     </div>
                 </li>
                     ';
@@ -91,9 +91,9 @@
                         <li class="' . $todo['status'] . ' list-group-item d-flex justify-content-between align-items-center">
                     ' . $todo["title"] . '
                     <div>
-                        <a href="/pending?id=' . $todo["id"] . '" class="btn btn-outline-primary">Pending</a>
+                        <a href="/pending/' . $todo["id"] . '" class="btn btn-outline-primary">Pending</a>
                          
-                        <a href="/complete?id=' . $todo["id"] . '" class="btn btn-outline-success">Complete</a> 
+                        <a href="/complete/' . $todo["id"] . '" class="btn btn-outline-success">Complete</a> 
                     </div>
                 </li>
                     ';
