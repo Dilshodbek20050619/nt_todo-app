@@ -52,6 +52,5 @@ class Todo
         return $this->pdo->prepare($query)->execute([
             ":id" => $id
         ]);
-
     }
 }

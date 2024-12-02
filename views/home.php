@@ -13,9 +13,11 @@
             background-image: url("https://www.udohjeremiah.com/_next/image?url=%2Fblog%2Fremix-todo-app%2Fhero.webp&w=3840&q=100");
 
         }
-        .todo-body h1 ,p {
+
+        .todo-body h1, p {
             color: #ffffff;
         }
+
         .todo-body {
             background-color: #cac7c7;
             max-width: 700px;
@@ -30,6 +32,7 @@
             text-decoration: line-through;
             color: green;
         }
+
         .in_progress {
             text-decoration: underline;
             color: orange;
@@ -61,7 +64,7 @@
                 <?php
                 /** @var TYPE_NAME $todos */
                 foreach ($todos as $todo) {
-                    if($todo['status']=='completed'){
+                    if ($todo['status'] == 'completed') {
                         echo '
                         <li class="' . $todo['status'] . ' list-group-item d-flex justify-content-between align-items-center">
                     ' . $todo["title"] . '
@@ -72,8 +75,7 @@
                     </div>
                 </li>
                     ';
-                    }
-                    elseif ($todo['status']=='pending'){
+                    } elseif ($todo['status'] == 'pending') {
                         echo '
                         <li class="' . $todo['status'] . ' list-group-item d-flex justify-content-between align-items-center">
                     ' . $todo["title"] . '
@@ -84,8 +86,7 @@
                     </div>
                 </li>
                     ';
-                    }
-                    else {
+                    } else {
                         echo '
                         <li class="' . $todo['status'] . ' list-group-item d-flex justify-content-between align-items-center">
                     ' . $todo["title"] . '

@@ -8,15 +8,15 @@
     <title>Document</title>
 </head>
 <body>
-      <div class="container">
-          <form action="" method="get">
-              <input type="text" name="num1">
+<div class="container">
+    <form action="" method="get">
+        <input type="text" name="num1">
 
-<!--              <input type="text" name="num2">-->
-              <button type="submit">yuborish</button>
+        <!--              <input type="text" name="num2">-->
+        <button type="submit">yuborish</button>
 
-          </form>
-      </div>
+    </form>
+</div>
 </body>
 </html>
 
@@ -45,10 +45,16 @@
 //    echo $m . '<br>';
 //}
 
-$text=$_GET['num1'];
-$summ=0;
-foreach ($text as $value) {
-    $summ=$summ+1;
+$text = $_GET['num1'];
+$summ = 0;
+$unli = ['a', 'u', 'o', 'e', 'i', 'A', 'U', 'O', 'E', 'I', 'A'];
+for ($i = 0; $i < strlen($text); $i++) {
+    echo $text;
+    for ($j = 0; $j < strlen($unli); $j++) {
+        if ($text[$i] == $unli[$j]) {
+            $summ = $summ + 1;
+        }
+    }
 }
 echo $summ;
 
