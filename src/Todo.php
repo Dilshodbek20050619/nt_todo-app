@@ -53,4 +53,21 @@ class Todo
             ":id" => $id
         ]);
     }
+
+    public function delete(int $id): bool
+    {
+        $query = "DELETE FROM todos where id=:id";
+        return $this->pdo->prepare($query)->execute([
+            ":id" => $id
+        ]);
+    }
+
+    public function getTodo(int $id){
+        $query="SELECT * FROM todos where id=:id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([
+            ":id" => $id
+        ]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
