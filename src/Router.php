@@ -39,4 +39,19 @@ class Router
         }
         return false;
     }
+
+    public function put($router, $callback){
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+            if($_POST["_method"] == "put"){
+
+                $resourseId=$this->getResource();
+                $router=str_replace('{id}', $resourseId, $router);
+                if ($router == $this->currentRouter) {
+                    $callback($resourseId);
+                    exit();
+                }
+            }
+        }
+    }
 }

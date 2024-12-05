@@ -70,4 +70,17 @@ class Todo
         ]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+    public function update(int $id,string $status, string $title, string $due_date){
+        $due_date= new DateTime($due_date);
+        $due_date = $due_date->format('Y-m-d H:i:s');
+        $query = "UPDATE todos  set title=:title, status=:status,due_date=:due_date ,updated_at =NOW() where id=:id";
+        $stmt = $this->pdo->prepare($query);
+        return $stmt->execute([
+            ":id" => $id,
+            ":title" => $title,
+            ":status" => $status,
+            ":due_date" => $due_date
+        ]);
+
+    }
 }

@@ -13,7 +13,7 @@ echo $x;
     <title>Document</title>
     <style>
         .button {
-            background-color: lightblue; /* Dastlabki fon rangi */
+            background-color: lightblue;
             border: none;
             color: white;
             padding: 10px 20px;
@@ -22,7 +22,7 @@ echo $x;
         }
 
         .button:hover {
-            background-color: darkblue; /* Hover holatida fon rangi */
+            background-color: darkblue;
         }
 
     </style>
