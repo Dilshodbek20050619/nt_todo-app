@@ -9,11 +9,14 @@ require 'views/companent/header.php';
         <form action="/todos">
             <button class="button" type="submit">
                 <strong>
-                    Asosiy sahifaha utish
+                    Asosiy sahifaha utish;
                 </strong>
             </button>
         </form>
     </div>
-</div>
+</div>000.
+
+
+
 <?php
 require 'views/companent/futter.php';

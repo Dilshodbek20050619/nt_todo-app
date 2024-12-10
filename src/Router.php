@@ -1,54 +1,52 @@
 <?php
 
+namespace App;
 class Router
 {
-    public $currentRouter;
+    public $currentRoute;
 
     public function __construct()
     {
-        $this->currentRouter = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-
+        $this->currentRoute = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     }
-    public function post($router, $callback)
+
+    public function getResources()
     {
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if ($router == $this->currentRouter) {
-                $callback();
+        if (isset(explode('/', $this->currentRoute)[2])) {
+            $resourceId = explode('/', $this->currentRoute)[2];
+            return $resourceId;
+        }
+        return false;
+    }
+
+    public function get($route, $callback): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            $resourceId = $this->getResources();
+            $route = str_replace('{id}', $resourceId, $route);
+            if ($route == $this->currentRoute) {
+                $callback($resourceId);
                 exit();
             }
         }
     }
 
-
-    public function get($router, $callback)
+    public function post($route, $callback): void
     {
-        if ($_SERVER["REQUEST_METHOD"] == "GET") {
-            $resourseId=$this->getResource();
-            $router=str_replace('{id}', $resourseId, $router);
-            if ($router == $this->currentRouter) {
-                $callback($resourseId);
-            }
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && $this->currentRoute == $route) {
+            $callback();
+            exit();
         }
     }
 
-
-    public function getResource(){
-        if (isset(explode("/", $this->currentRouter)[2])){
-            $resourceId = (int)explode("/", $this->currentRouter)[2];
-            return $resourceId?$resourceId:false;
-        }
-        return false;
-    }
-
-    public function put($router, $callback){
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-            if($_POST["_method"] == "put"){
-
-                $resourseId=$this->getResource();
-                $router=str_replace('{id}', $resourseId, $router);
-                if ($router == $this->currentRouter) {
-                    $callback($resourseId);
+    public function put($route, $callback): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if ($_POST['_method'] == 'PUT') {
+                $resourceId = $this->getResources();
+                $route = str_replace('{id}', $resourceId, $route);
+                if ($route == $this->currentRoute) {
+                    $callback($resourceId);
                     exit();
                 }
             }
